@@ -1,0 +1,7 @@
+# Keep generated calendar data and formatter checks identical on Windows/Linux.
+* text=auto eol=lf
+*.png binary
+*.pdf binary
+*.ttf binary
+*.woff2 binary
+*.ico binary
