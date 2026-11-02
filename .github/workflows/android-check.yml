@@ -18,6 +18,9 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools'
+          log-accepted-android-sdk-licenses: false
       - name: Build pure Python dependency and test Android dependency set
         run: |
           mkdir -p output/android-wheels
