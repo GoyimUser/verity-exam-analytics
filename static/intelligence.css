@@ -1,0 +1,126 @@
+.analysis-panel {
+  margin-block: 20px;
+  min-width: 0;
+}
+.analysis-panel p,
+.analysis-note {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.8;
+}
+.analysis-note {
+  display: block;
+  margin-block: 8px;
+}
+.analysis-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-block: 16px;
+}
+.analysis-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-block: 8px;
+}
+.analysis-metric span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.analysis-metric strong {
+  font-size: 1.2rem;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.analysis-definitions summary,
+.analysis-evidence summary {
+  cursor: pointer;
+  padding-block: 10px;
+  line-height: 1.7;
+}
+.analysis-evidence {
+  font-size: 0.82rem;
+  min-width: 0;
+}
+.analysis-panel .chart-table {
+  max-height: 440px;
+  overflow: auto;
+}
+.analysis-panel table th,
+.analysis-panel table td {
+  vertical-align: top;
+  white-space: normal;
+  min-width: 90px;
+}
+.analysis-panel fieldset {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  margin-block: 12px;
+  min-width: 0;
+}
+.analysis-panel label {
+  display: grid;
+  gap: 8px;
+  margin-block: 12px;
+}
+.analysis-panel input {
+  width: 100%;
+  min-width: 0;
+}
+.analysis-panel button[type="submit"] {
+  margin-block: 12px;
+}
+.import-choice {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  margin-block: 18px;
+}
+.import-choice input {
+  width: auto;
+  flex: 0 0 auto;
+  margin-block-start: 5px;
+}
+#import-dialog {
+  max-width: 800px;
+}
+#import-results .chart-table {
+  max-height: 45vh;
+  overflow: auto;
+}
+#import-results td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#import-dialog > p {
+  line-height: 1.8;
+  color: var(--muted);
+}
+#import-dialog > p,
+#import-dialog > .import-choice,
+#import-results {
+  margin-inline: 24px;
+}
+#import-results table {
+  width: 100%;
+}
+#period-result,
+#scenario-result {
+  overflow-wrap: anywhere;
+}
+.insight .analysis-metrics {
+  display: block;
+}
+@media (max-width: 600px) {
+  .analysis-metrics {
+    grid-template-columns: 1fr;
+  }
+  .analysis-panel {
+    padding: 18px;
+  }
+  .analysis-panel table {
+    font-size: 0.8rem;
+  }
+}

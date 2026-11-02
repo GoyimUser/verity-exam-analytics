@@ -1,0 +1,5 @@
+# Windows x64 / Python 3.12 build inputs.
+-r requirements.txt
+pywebview==6.2.1
+pyinstaller==6.15.0
+pillow==11.3.0

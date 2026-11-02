@@ -1,0 +1,69 @@
+@font-face {
+  font-family: Manrope;
+  src: url("/static/fonts/Manrope-Variable.ttf") format("truetype");
+  font-weight: 200 800;
+  font-display: swap;
+}
+html[lang="fa"] th,
+html[lang="fa"] .tag,
+html[lang="fa"] .eyebrow,
+html[lang="fa"] .badge {
+  font-family: Vazirmatn, Tahoma, sans-serif;
+  letter-spacing: normal;
+}
+.scope-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  margin-block: 16px;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.calendar-dialog {
+  padding: 20px;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow: auto;
+}
+.calendar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-block: 12px;
+}
+.calendar-head h2 {
+  font-size: 18px;
+}
+.calendar-dialog p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+.calendar-dialog label {
+  display: grid;
+  gap: 6px;
+}
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin-block: 16px;
+}
+.calendar-days span {
+  font-size: 9px;
+  text-align: center;
+}
+.calendar-days button {
+  padding: 8px 2px;
+  min-height: 38px;
+}
+.calendar-launch {
+  justify-self: start;
+  font-size: 11px;
+}
+.scope-bar span {
+  min-width: 0;
+}

@@ -1,0 +1,10 @@
+{
+  "exams": 10000,
+  "weeks": 1000,
+  "history_page": 50,
+  "exam_queries": 2,
+  "study_queries": 3,
+  "history_seconds": 0.008571900019887835,
+  "study_seconds": 0.008490900014294311,
+  "full_analytics_seconds": 0.3830665000132285
+}

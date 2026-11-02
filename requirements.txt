@@ -1,0 +1,6 @@
+-c constraints-windows-py312.txt
+fastapi==0.146.0
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32
+openpyxl==3.1.5
+playwright==1.64.1

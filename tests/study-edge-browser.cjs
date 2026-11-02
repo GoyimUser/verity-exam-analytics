@@ -1,0 +1,42 @@
+async page=>{
+ const base='http://127.0.0.1:8002';if(new URL(page.url()).origin!==base)throw Error('Disposable fixture server required');
+ const assert=(v,m)=>{if(!v)throw Error(m)},errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const ready=()=>page.locator('#app[aria-busy=false] #main-content').waitFor();
+ await page.request.patch(base+'/api/settings',{data:{application_mode:'advanced',language:'en',theme:'dark'}});
+ await page.setViewportSize({width:1440,height:1000});await page.goto(base);await ready();
+ await page.locator('[data-view=study]').click();await page.locator('#study-week').waitFor();
+ await page.locator('#study-from').fill('2028-01-01');await page.locator('#study-from').dispatchEvent('change');await ready();
+ assert(await page.locator('#study-stack .empty').count()===1,'empty history state missing');
+ const empty='2028-01-01';await page.request.put(base+'/api/study/weeks/'+empty,{data:{revision:0,entries:[]}});
+ await page.locator('#study-to').fill(empty);await page.locator('#study-to').dispatchEvent('change');await ready();
+ assert(await page.evaluate(()=>S.charts['study-stack'].getOption().series[0].data[0]===0),'saved zero week not plotted');
+ assert(await page.evaluate(()=>ST.analysis.average_minutes===0&&ST.analysis.shares.practical===null),'zero analytics');
+ assert((await page.locator('.study-stats .kpi').last().innerText()).includes('—'),'zero week has an arbitrary top category');
+ await page.locator(`[data-study-week="${empty}"]`).click();await page.locator('#study-report-dialog:modal').waitFor();
+ assert(await page.locator('.study-report-entry').count()===0,'zero categories shown in report');await page.locator('[data-study-close]').click();
+ const category=await(await page.request.post(base+'/api/study/categories',{data:{name_en:'Archived study',name_fa:'مطالعه بایگانی',study_group:'theoretical',color:'#4269aa'}})).json();
+ const old='2028-01-08';await page.request.put(base+'/api/study/weeks/'+old,{data:{revision:0,entries:[{category_id:category.id,minutes:75}]}});
+ await page.request.patch(base+'/api/study/categories/'+category.id,{data:{name_en:'Renamed archive',study_group:'practical',enabled:false}});
+ await page.locator('#study-week').fill(old);await page.locator('#study-week').dispatchEvent('change');await ready();
+ let row=page.locator(`.study-entry[data-category="${category.id}"][data-video="0"]`);
+ assert((await row.innerText()).includes('Archived study')&&(await row.innerText()).includes('Disabled'),'historical disabled label missing');
+ assert(await row.getAttribute('data-group')==='theoretical','historical group changed');
+ await row.locator('.entry-minutes').fill('20');
+ await page.locator('[data-view=settings]').click();await ready();await page.locator('[data-view=study]').click();await ready();
+ row=page.locator(`.study-entry[data-category="${category.id}"][data-video="0"]`);
+ assert(await row.locator('.entry-minutes').inputValue()==='20','navigation discarded draft');
+ await page.locator('#study-form [type=submit]').click();await ready();
+ const saved=await(await page.request.get(base+'/api/study/weeks/'+old)).json();
+ assert(saved.totals.theoretical===80&&saved.totals.practical===0,'editing disabled history changed classification');
+ await page.locator('#study-week').fill('2028-01-15');await page.locator('#study-week').dispatchEvent('change');await ready();
+ assert(await page.locator(`.study-entry[data-category="${category.id}"]`).count()===0,'disabled category offered on a new week');
+ // A report arriving after navigation must not reopen an unrelated page's dialog.
+ await page.locator('#study-reset').click();await ready();let release,entered;
+ const gate=new Promise(r=>release=r),seen=new Promise(r=>entered=r);
+ await page.route('**/api/study/weeks/2026-10-17',async route=>{entered();await gate;await route.continue()});
+ await page.locator('[data-study-week="2026-10-17"]').click();await seen;
+ await page.locator('[data-view=history]').click();await ready();release();await page.waitForTimeout(300);
+ assert(await page.locator('#study-report-dialog').count()===0,'late response opened a stale dialog');await page.unroute('**/api/study/weeks/2026-10-17');
+ assert(errors.length===0,errors.join('\n'));
+ return {emptyHistory:true,zeroWeek:true,disabledHistory:true,draftNavigation:true,lateResponse:true,errors};
+}

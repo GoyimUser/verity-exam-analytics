@@ -1,0 +1,646 @@
+{
+  "configurations": [
+    "chromium-en-light-quick-390",
+    "chromium-en-light-quick-1440",
+    "chromium-en-light-advanced-390",
+    "chromium-en-light-advanced-1440",
+    "chromium-en-dark-quick-390",
+    "chromium-en-dark-quick-1440",
+    "chromium-en-dark-advanced-390",
+    "chromium-en-dark-advanced-1440",
+    "chromium-fa-light-quick-390",
+    "chromium-fa-light-quick-1440",
+    "chromium-fa-light-advanced-390",
+    "chromium-fa-light-advanced-1440",
+    "chromium-fa-dark-quick-390",
+    "chromium-fa-dark-quick-1440",
+    "chromium-fa-dark-advanced-390",
+    "chromium-fa-dark-advanced-1440",
+    "firefox-en-light-quick-390",
+    "firefox-en-light-quick-1440",
+    "firefox-en-light-advanced-390",
+    "firefox-en-light-advanced-1440",
+    "firefox-en-dark-quick-390",
+    "firefox-en-dark-quick-1440",
+    "firefox-en-dark-advanced-390",
+    "firefox-en-dark-advanced-1440",
+    "firefox-fa-light-quick-390",
+    "firefox-fa-light-quick-1440",
+    "firefox-fa-light-advanced-390",
+    "firefox-fa-light-advanced-1440",
+    "firefox-fa-dark-quick-390",
+    "firefox-fa-dark-quick-1440",
+    "firefox-fa-dark-advanced-390",
+    "firefox-fa-dark-advanced-1440",
+    "webkit-en-light-quick-390",
+    "webkit-en-light-quick-1440",
+    "webkit-en-light-advanced-390",
+    "webkit-en-light-advanced-1440",
+    "webkit-en-dark-quick-390",
+    "webkit-en-dark-quick-1440",
+    "webkit-en-dark-advanced-390",
+    "webkit-en-dark-advanced-1440",
+    "webkit-fa-light-quick-390",
+    "webkit-fa-light-quick-1440",
+    "webkit-fa-light-advanced-390",
+    "webkit-fa-light-advanced-1440",
+    "webkit-fa-dark-quick-390",
+    "webkit-fa-dark-quick-1440",
+    "webkit-fa-dark-advanced-390",
+    "webkit-fa-dark-advanced-1440"
+  ],
+  "workflows": [
+    "draft cancel and stale-edit preservation",
+    "selected examination comparison and complete metadata",
+    "subject management",
+    "examination PDF and Excel downloads",
+    "Quick dirty navigation and reload guard",
+    "timing derivation and saved unanswered weight",
+    "independent duplicate category legends in English/Persian"
+  ],
+  "accessibility": [
+    {
+      "label": "comparison dialog",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-light-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-en-dark-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-light-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "chromium-fa-dark-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-light-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-en-dark-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-light-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "firefox-fa-dark-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-light-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-en-dark-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-light-advanced-1440 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-quick-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-quick-390 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-quick-390 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-quick-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-quick-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-quick-1440 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-advanced-390 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-advanced-390 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-advanced-390 study",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-advanced-1440 dashboard",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-advanced-1440 settings",
+      "violations": []
+    },
+    {
+      "label": "webkit-fa-dark-advanced-1440 study",
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "firefoxWorkspaceCopy": true,
+  "ok": true
+}
