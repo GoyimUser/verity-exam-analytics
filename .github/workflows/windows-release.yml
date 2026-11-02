@@ -68,7 +68,9 @@ jobs:
         run: |
           gh release view $env:GITHUB_REF_NAME *> $null
           if ($LASTEXITCODE -ne 0) {
-            gh release create $env:GITHUB_REF_NAME release/* --title "Verity $env:GITHUB_REF_NAME — Windows x64" --notes-file RELEASE_NOTES.md --prerelease --verify-tag
+            $releaseArgs = @('release','create',$env:GITHUB_REF_NAME) + @(Get-ChildItem release -File | ForEach-Object FullName) + @('--title',"Verity $env:GITHUB_REF_NAME",'--notes-file','RELEASE_NOTES.md','--verify-tag')
+            if ($env:GITHUB_REF_NAME.Contains('-')) { $releaseArgs += '--prerelease' }
+            gh @releaseArgs
             if ($LASTEXITCODE -ne 0) { throw 'Release publication failed' }
           }
           exit 0

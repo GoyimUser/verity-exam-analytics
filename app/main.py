@@ -12,11 +12,10 @@ from fastapi import FastAPI, File, HTTPException, Query, UploadFile, Path as Api
 from starlette.background import BackgroundTask
 from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from .analytics import build_analytics
 from . import storage
-from .validation import BodyLimitMiddleware, LocalOriginMiddleware
+from .validation import BodyLimitMiddleware, LocalOriginMiddleware, LocalHostMiddleware
 from .statistics_extra import compare, simulate
 from .scoring import calculate_score
 from .validation import number
@@ -31,7 +30,7 @@ from starlette.requests import Request
 app = FastAPI(title="Verity Exam Intelligence", version="1.0.0")
 app.add_middleware(BodyLimitMiddleware)
 app.add_middleware(LocalOriginMiddleware)
-app.add_middleware(TrustedHostMiddleware,allowed_hosts=['localhost','127.0.0.1','[::1]'],www_redirect=False)
+app.add_middleware(LocalHostMiddleware)
 from .study_api import router as study_router
 from .study import StudyError
 app.include_router(study_router)

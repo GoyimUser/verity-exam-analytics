@@ -1,5 +1,6 @@
 """Bounded scalar validation shared by HTTP and import writes."""
 import math
+import re
 from urllib.parse import urlsplit
 
 
@@ -33,6 +34,29 @@ def number(value, label, minimum=0, maximum=1e100):
     if not math.isfinite(result) or not minimum <= result <= maximum:
         raise ValueError(f'{label} is outside its supported finite range.')
     return result
+
+class LocalHostMiddleware:
+    """Validate the complete Host authority, including bracketed IPv6."""
+    def __init__(self, app): self.app=app
+    async def __call__(self, scope, receive, send):
+        if scope['type']!='http':return await self.app(scope,receive,send)
+        from urllib.parse import urlsplit
+        from starlette.responses import JSONResponse
+        hosts=[v for k,v in scope.get('headers',[]) if k.lower()==b'host']
+        valid=False
+        if len(hosts)==1:
+            try:
+                raw=hosts[0].decode('ascii')
+                parsed=urlsplit('http://'+raw)
+                valid=(re.fullmatch(r'(?:localhost|127\.0\.0\.1|\[::1\])(?::[0-9]{1,5})?',raw,re.IGNORECASE) is not None
+                       and parsed.hostname in ('localhost','127.0.0.1','::1')
+                       and parsed.username is None and parsed.password is None
+                       and not parsed.path and not parsed.query and not parsed.fragment
+                       and (parsed.port is None or 1<=parsed.port<=65535))
+            except (ValueError,UnicodeError):pass
+        if not valid:return await JSONResponse({'detail':'Invalid host'},status_code=400)(scope,receive,send)
+        return await self.app(scope,receive,send)
+
 
 class BodyLimitMiddleware:
     """Count actual received bytes before parsing, including chunked uploads."""

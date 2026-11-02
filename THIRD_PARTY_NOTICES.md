@@ -9,3 +9,5 @@ The bundled Apache ECharts 6.0.0 source is covered by Apache-2.0 and its include
 Vazirmatn and Manrope fonts are distributed under SIL Open Font License 1.1; their license texts and provenance are under `static/fonts/`.
 
 Microsoft Edge WebView2 Runtime is a separately installed Microsoft component and is not redistributed by this package. Project code licensing is independent of these dependency notices.
+
+Android embeds Python through Chaquopy (MIT; https://github.com/chaquo/chaquopy). Its license and Python's license are included in APK assets. Python package licenses remain in their bundled distribution metadata; font and chart licenses accompany the shared static assets. Android System WebView and the system print/document services are provided by the device, not redistributed by Verity. Android does not bundle pywebview, Python.NET or Playwright.

@@ -18,7 +18,7 @@ import time
 import urllib.request
 from contextlib import closing
 
-VERSION = '1.0.0-beta.1'
+VERSION = '1.0.0'
 
 
 def data_directory(override: str | None = None) -> Path:

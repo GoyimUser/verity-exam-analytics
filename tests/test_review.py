@@ -42,8 +42,11 @@ class ReviewTests(unittest.TestCase):
             self.assertEqual(storage.list_exams(),[])
             self.assertEqual(client.post('/api/exams',json=self.payload(),headers={'Origin':'http://127.0.0.1'}).status_code,201)
             self.assertEqual(client.get('/api/exams').status_code,200)
-        for origin in ['http://localhost','http://[::1]']:
-            with TestClient(app,base_url=origin) as client:self.assertEqual(client.get('/api/settings').status_code,200)
+        # Exercise the actual Host middleware without older Starlette test
+        # transports mis-parsing an IPv6 literal as a port number.
+        for host in ['localhost','[::1]']:
+            with TestClient(app,base_url='http://127.0.0.1') as client:
+                self.assertEqual(client.get('/api/settings',headers={'Host':host}).status_code,200)
 
     def test_filtered_export_scope_and_formula_safe_text(self):
         storage.save_exam(dict(self.payload(),title='=1+1',subject='@Math',notes='+command',tags=['-tag'],correct_answers=0,incorrect_answers=4))
@@ -62,6 +65,25 @@ class ReviewTests(unittest.TestCase):
                 self.assertEqual(float(rows[1][9]),-4)
             for endpoint in ['json','csv']:
                 self.assertEqual(client.get('/api/export/'+endpoint,params={'from_date':'2026-02-30'}).status_code,422)
+
+    def test_local_host_rejects_malformed_authorities(self):
+        with TestClient(app,base_url='http://127.0.0.1') as client:
+            for host in ['localhost:', 'localhost:0', 'localhost:65536', 'localhost:abc',
+                         'user@localhost', 'localhost/path', 'localhost?x',
+                         'localhost#x', 'localhost.evil.example', '::1', '[::1]:0']:
+                with self.subTest(host=host):
+                    self.assertEqual(client.get('/api/settings',headers={'Host':host}).status_code,400)
+            self.assertEqual(client.get('/api/settings',headers=[('Host','localhost'),('Host','localhost')]).status_code,400)
+            for host in ['localhost:8000','127.0.0.1:65535','[::1]:8000','LOCALHOST']:
+                self.assertEqual(client.get('/api/settings',headers={'Host':host}).status_code,200)
+
+    def test_single_exam_report_has_visible_marker(self):
+        from app.exam_reports import html_report
+        storage.save_exam(self.payload())
+        for language in ['en','fa']:
+            html=html_report(storage.list_exams(),language,'native')
+            self.assertEqual(html.count('<circle '),1)
+            self.assertIn('r="3"',html)
 
     def test_restore_validates_write_domains_without_replacing_data(self):
         storage.save_exam(self.payload())

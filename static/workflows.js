@@ -69,22 +69,49 @@ async function downloadExamReport(format, button) {
   if (button.disabled) return;
   button.disabled = true;
   try {
+    if (format === "pdf" && window.VerityAndroid) {
+      window.VerityAndroid.printReport(
+        reportLink(format).replace(
+          "/api/export/pdf?",
+          "/api/android/report?kind=exam&",
+        ),
+      );
+      return;
+    }
     const response = await fetch(reportLink(format));
     if (!response.ok) {
       const body = await response.json();
       throw Error(errorText(body.detail));
     }
-    const url = URL.createObjectURL(await response.blob()),
-      a = document.createElement("a");
-    a.href = url;
-    a.download = `verity-exams.${format}`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 30000);
+    await saveDownload(await response.blob(), `verity-exams.${format}`);
   } catch (error) {
     toast(error.message, true);
   } finally {
     button.disabled = false;
   }
+}
+
+async function saveDownload(blob, filename) {
+  if (window.VerityAndroid) {
+    const data = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+    window.VerityAndroid.saveFile(
+      data,
+      filename,
+      blob.type || "application/octet-stream",
+    );
+    return;
+  }
+  const url = URL.createObjectURL(blob),
+    a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
 }
 
 function extendWorkspace() {

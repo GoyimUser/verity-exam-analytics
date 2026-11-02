@@ -1,0 +1,57 @@
+plugins { id 'com.android.application'; id 'com.chaquo.python' }
+android {
+    namespace 'io.github.goyimuser.verity'
+    compileSdk 36
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    defaultConfig {
+        applicationId 'io.github.goyimuser.verity'
+        minSdk 26
+        targetSdk 35
+        versionCode 10000
+        versionName '1.0.0'
+        manifestPlaceholders = [appLabel: 'Verity']
+        ndk { abiFilters 'arm64-v8a', 'x86_64' }
+    }
+    signingConfigs {
+        release {
+            if (System.getenv('VERITY_KEYSTORE')) {
+                storeFile file(System.getenv('VERITY_KEYSTORE'))
+                storePassword System.getenv('VERITY_STORE_PASSWORD')
+                keyAlias 'verity'
+                keyPassword System.getenv('VERITY_STORE_PASSWORD')
+            }
+        }
+    }
+    buildTypes { debug { applicationIdSuffix '.qa'; manifestPlaceholders.appLabel = 'Verity QA' }; release { signingConfig signingConfigs.release; minifyEnabled false } }
+    sourceSets { main { assets.srcDir layout.buildDirectory.dir('generated/notices') } }
+}
+chaquopy {
+    defaultConfig {
+        version '3.12'
+        buildPython System.getenv('VERITY_BUILD_PYTHON') ?: 'python'
+        extractPackages 'app'
+        pip {
+            options '--index-url', System.getenv('VERITY_PIP_INDEX_URL') ?: 'https://pypi.org/simple', '--retries', '1', '--timeout', '20'
+            install '../../output/android-wheels/pydantic-1.10.24-py3-none-any.whl'
+            install 'fastapi==0.125.0'
+            install 'starlette==0.50.0'
+            install 'uvicorn==0.35.0'
+            install 'python-multipart==0.0.32'
+            install 'openpyxl==3.1.5'
+        }
+    }
+    sourceSets { main { srcDirs = ['src/main/python', 'build/generated/python'] } }
+}
+tasks.register('stagePython', Sync) {
+    from('../../app') { into 'app'; exclude '**/__pycache__/**' }
+    from('../../static') { into 'static' }
+    from('../../desktop.py')
+    into layout.buildDirectory.dir('generated/python')
+}
+tasks.configureEach { if ((name.startsWith('generate') || name.startsWith('merge')) && name.contains('Python')) dependsOn 'stagePython' }
+tasks.register('stageNotices', Sync) {
+    from('../../THIRD_PARTY_NOTICES.md')
+    from('src/main/licenses')
+    into layout.buildDirectory.dir('generated/notices')
+}
+tasks.configureEach { if ((name.startsWith('merge') && name.endsWith('Assets')) || name.toLowerCase().contains('lint')) dependsOn 'stageNotices' }

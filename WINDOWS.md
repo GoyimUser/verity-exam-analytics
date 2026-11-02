@@ -2,7 +2,7 @@
 
 Download from [GitHub Releases](https://github.com/GoyimUser/verity-exam-analytics/releases). Frozen HTTP checks and native WebView2 tests cover Weekly Study persistence across restart, English/Persian rendering and examination/study PDF and Excel downloads.
 
-1. Download `Verity-1.0.0-beta.1-windows-x64-setup.exe` for the installer, or the executable/ZIP without `-setup` for portable use.
+1. Download `Verity-1.0.0-windows-x64-setup.exe` for the installer, or the executable/ZIP without `-setup` for portable use.
 2. Run the executable. No Python, Node.js, database server or administrator installation is required.
 3. Use Settings to choose Quick/Advanced Mode, English/Persian, theme and scoring defaults.
 
@@ -10,7 +10,7 @@ Requires Windows 10/11 x64, .NET Framework 4.6.2 or newer, and Microsoft Edge We
 
 The installer checks for WebView2 before installation. It installs under `%LOCALAPPDATA%\Programs\Verity` without requiring administrator access. An optional desktop shortcut and a Start menu entry are available. Uninstall from Windows Settings; your `%LOCALAPPDATA%\Verity` database, recovery backups and logs are retained. The installer contains no personal or demonstration database.
 
-This initial preview executable is **unsigned**. Windows may show an unknown-publisher/SmartScreen prompt. Compare the download with the release SHA256SUMS file; no code-signing identity is bundled.
+This executable is **unsigned**. Windows may show an unknown-publisher/SmartScreen prompt. Compare the download with the release SHA256SUMS file; no code-signing identity is bundled.
 
 ## Your data
 
@@ -24,7 +24,7 @@ Advanced users can use `Verity.exe --data-dir "D:\My Verity Profile"` for a sepa
 
 ## Known scope
 
-Examination reports support prepared PDF, Excel, JSON and CSV, with JSON/CSV import. Weekly Study supports PDF/Excel/CSV/text reports. PDF rendering uses installed Microsoft Edge when Playwright Chromium is absent; the Playwright driver ships in the executable. Jalali date input supports 1200–1600. JSON interchange retains canonical field names and Gregorian dates. The local build is unsigned and has not undergone external release certification.
+Examination reports support prepared PDF, Excel, JSON and CSV, with JSON/CSV import. Weekly Study supports PDF/Excel/CSV/text reports. PDF rendering uses installed Microsoft Edge when Playwright Chromium is absent; the Playwright driver ships in the executable. Jalali date input supports 1200–1600. JSON interchange retains canonical field names and Gregorian dates. The Windows executable is unsigned.
 
 ## Build from source
 

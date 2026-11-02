@@ -60,7 +60,9 @@ def html_report(rows,language='en',digits='native',scope=None):
     cards=''.join(f'<div><small>{w[k]}</small><strong><bdi dir="ltr">{fmt(v)}{("٪" if rtl else "%") if k!="count" and v is not None else ""}</bdi></strong></div>' for k,v in summary(rows))
     values=[r['percentage'] for r in rows];low=min([0]+values);high=max([100]+values);span=high-low or 1
     points=' '.join(f'{45+i*570/max(1,len(rows)-1):.2f},{190-(v-low)/span*160:.2f}' for i,v in enumerate(values))
+    markers=''.join(f'<circle cx="{45+i*570/max(1,len(rows)-1):.2f}" cy="{190-(v-low)/span*160:.2f}" r="3" fill="#087e69"/>' for i,v in enumerate(values))
     chart=f'<svg viewBox="0 0 660 230" role="img" aria-label="{w["trend"]}"><path d="M45 20V190H630" stroke="#8298a5" fill="none"/><text direction="ltr" unicode-bidi="isolate" x="5" y="30">{fmt(high)}%</text><text direction="ltr" unicode-bidi="isolate" x="5" y="190">{fmt(low)}%</text><polyline points="{points}" stroke="#087e69" stroke-width="2" fill="none"/></svg>'
+    chart=chart.replace('</svg>',markers+'</svg>')
     if rows:chart+=f'<p class="ends"><bdi>{date_label(rows[0]["exam_date"],language,digits)}</bdi><bdi>{date_label(rows[-1]["exam_date"],language,digits)}</bdi></p>'
     sections=[]
     for row in rows:

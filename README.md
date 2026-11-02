@@ -2,9 +2,11 @@
 
 A local-first examination analytics application. It stores records in SQLite, calculates scores with configurable marking weights, and turns historical attempts into trend, subject, completion, and consistency insight.
 
-## Windows application
+## Windows and Android applications
 
-Download the Windows installer or portable version from [GitHub Releases](https://github.com/GoyimUser/verity-exam-analytics/releases). The installer uses a per-user installation, creates a Start menu shortcut and supports uninstall without deleting your records. The executable is unsigned. See [Windows packaging and data storage notes](WINDOWS.md). User data is stored separately under `%LOCALAPPDATA%\Verity`. Build automation is in `.github/workflows/windows-release.yml`.
+Download the Android APK, Windows installer or portable version from [GitHub Releases](https://github.com/GoyimUser/verity-exam-analytics/releases). The installer uses a per-user installation, creates a Start menu shortcut and supports uninstall without deleting your records. The executable is unsigned. See [Windows packaging and data storage notes](WINDOWS.md). User data is stored separately under `%LOCALAPPDATA%\Verity`. Build automation is in `.github/workflows/windows-release.yml`.
+
+See [Android installation, data transfer and build instructions](ANDROID.md). The stable release is **1.0.0**; the earlier beta remains available as historical evidence.
 
 ## Operating modes and languages
 

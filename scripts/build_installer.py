@@ -24,7 +24,10 @@ def compiler():
 
 def release_files():
     release = ROOT / 'release'
-    return [release / f'Verity-{VERSION}-windows-x64{suffix}' for suffix in ('.exe', '.zip', '-setup.exe')]
+    files=[release / f'Verity-{VERSION}-windows-x64{suffix}' for suffix in ('.exe', '.zip', '-setup.exe')]
+    android=release/f'Verity-{VERSION}-android.apk'
+    if android.exists():files.append(android)
+    return files
 
 
 def main():

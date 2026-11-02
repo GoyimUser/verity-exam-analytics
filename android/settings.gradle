@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        google(); mavenCentral(); gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'com.android.application') useModule("com.android.tools.build:gradle:${requested.version}")
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories { google(); mavenCentral(); maven { url 'https://maven.aliyun.com/repository/google' } }
+}
+rootProject.name = 'Verity'
+include ':app'

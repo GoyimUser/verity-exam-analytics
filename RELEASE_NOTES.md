@@ -1,18 +1,23 @@
-# Verity 1.0.0-beta.1 — Windows preview
+# Verity 1.0.0 — Windows and Android
 
-Personal examination and weekly study analytics with persistent local SQLite storage, Quick and Advanced modes, English/Persian interfaces, Jalali dates and locally bundled fonts/charts.
+Stable release of personal examination and weekly study analytics, with local SQLite persistence, Quick/Advanced modes, English/Persian interfaces and Jalali calendars.
 
-The per-user installer includes shortcuts and uninstall support. Your records are stored outside the application folder and survive upgrades and uninstall. No personal or demonstration database ships in these downloads.
+## Downloads
 
-## Download
+- **Verity-1.0.0-android.apk** — signed Android APK, Android 8+, ARM64/x86-64.
+- **Verity-1.0.0-windows-x64-setup.exe** — Windows installer.
+- **Verity-1.0.0-windows-x64.zip** — portable Windows package and notices.
+- **Verity-1.0.0-windows-x64.exe** — portable Windows executable.
+- **SHA256SUMS.txt** — checksums for the downloads.
 
-- **`Verity-1.0.0-beta.1-windows-x64-setup.exe`**: recommended installer.
-- **`Verity-1.0.0-beta.1-windows-x64.zip`**: portable app with documentation and third-party notices.
-- **`Verity-1.0.0-beta.1-windows-x64.exe`**: standalone portable executable.
-- **`SHA256SUMS.txt`**: checksums for all three downloads.
+The Windows build requires WebView2 and remains unsigned. Android uses the installed System WebView, runs its own local backend and needs no desktop/server connection. Android PDF reports use the system Save as PDF print flow; other imports and exports use the document picker.
 
-Windows 10/11 x64 and Microsoft Edge WebView2 Runtime are required; the installer checks this prerequisite. This preview is **unsigned**, so Windows may show an unknown-publisher warning. Records live in `%LOCALAPPDATA%\Verity`. Use Backup/Restore to transfer records from the web/source version.
+## Included
 
-Weekly Study provides Saturday–Friday aggregates, theoretical/practical categories, video subcategories and stacked charts. Examination PDF/Excel reporting, CSV round-trip import, selected-attempt comparison, safe metadata management, unanswered-point settings and timing controls are included. Draft protection, stale-edit conflicts, database guards, pagination and content-versioned assets address the review findings and Settings loading failures.
+Accurate configurable exam scoring, historical comparisons, trends, subject/topic analytics, Saturday–Friday study reports, category breakdowns, charts, bilingual PDF/Excel reports, CSV/JSON interchange and database backup/restore. Existing beta records migrate without recalculating historical scores. A one-result PDF timeline now displays its data point.
 
-Source regression, cross-browser and native Windows checks are documented in the repository. Installer acceptance covers installation, reinstallation, native operation, bilingual exports and data preservation after uninstall. This is a beta preview, not an independently certified or signed release.
+## Data and validation
+
+No personal reports or database are included. Transfer records between devices using Backup/Restore; there is no automatic cloud synchronization. Back up before uninstalling Android, which removes its private app data. Windows uninstall retains the separate profile.
+
+Backend and frontend regressions, Windows packaging checks and connected Android QA-device workflows were exercised. Android signing keys are kept outside the public repository. Version 1.0.0 supersedes the earlier 1.0.0-beta.1 release, which remains available separately.

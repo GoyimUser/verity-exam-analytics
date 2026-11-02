@@ -673,6 +673,12 @@ function wireStudyExports(root) {
               language: isFa() ? "fa" : "en",
               digits: S.settings.persian_digits || "native",
             });
+          if (format === "pdf" && window.VerityAndroid) {
+            window.VerityAndroid.printReport(
+              "/api/android/report?kind=study&" + params,
+            );
+            return;
+          }
           const response = await fetch("/api/study/export?" + params);
           if (!response.ok) {
             const error = await response.json();
@@ -692,12 +698,10 @@ function wireStudyExports(root) {
               $("#study-copy-close").onclick = closeDialog;
             }
           } else {
-            const url = URL.createObjectURL(await response.blob()),
-              link = document.createElement("a");
-            link.href = url;
-            link.download = "verity-weekly-study." + format;
-            link.click();
-            setTimeout(() => URL.revokeObjectURL(url), 30000);
+            await saveDownload(
+              await response.blob(),
+              "verity-weekly-study." + format,
+            );
           }
         } catch (error) {
           toast(error.message, true);
