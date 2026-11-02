@@ -32,10 +32,13 @@ async function main() {
     for (const language of ['en','fa']) for (const mode of ['advanced','quick']) {
       await page.evaluate(() => {S.view='settings';return load()});
       await page.locator(`[data-language=${language}]`).click();
+      await page.waitForFunction(value => document.documentElement.lang === value && S.settings.language === value, language);
       await ready();
       await page.locator(`[data-mode=${mode}]`).click();
+      await page.waitForFunction(value => S.settings.application_mode === value && S.view === (value === 'quick' ? 'quick' : 'overview') && document.querySelector('#app')?.getAttribute('aria-busy') === 'false', mode);
       await ready();
       assert.equal(await page.locator('html').getAttribute('dir'),language==='fa'?'rtl':'ltr');
+      await page.evaluate(() => {S.view='settings';return load()});
       assert.equal(await page.locator(`[data-mode=${mode}]`).getAttribute('aria-pressed'),'true');
       await page.evaluate(() => {S.view='study';return load()});
       await ready();
